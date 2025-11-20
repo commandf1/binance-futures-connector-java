@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 public class RequestHandler {
     private final String apiKey;
     private final String secretKey;
-    private static final Logger logger = LoggerFactory.getLogger(RequestHandler.class);
     private final ProxyAuth proxy;
 
     public RequestHandler(String apiKey, ProxyAuth proxy) {
@@ -40,7 +39,6 @@ public class RequestHandler {
     private String sendApiRequest(String baseUrl, String urlPath, String signature, LinkedHashMap<String, Object> parameters,
                                   HttpMethod httpMethod, RequestType requestType, boolean showLimitUsage) {
         String fullUrl = UrlBuilder.buildFullUrl(baseUrl, urlPath, parameters, signature);
-        logger.info("{} {}", httpMethod, fullUrl);
         Request request;
         switch (requestType) {
             case PUBLIC:
